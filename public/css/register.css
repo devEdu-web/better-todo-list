@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(65deg, #A663FC, #5151EC);
+    min-height: 100vh;
+}
+
+main {
+    display: relative;
+    background-color: white;
+    width: 30vw;
+    border-radius: 10px;
+}
+
+h1 {
+    display: absolute;
+    top: 0;
+}
+
+form {
+    /* background-color: red; */
+    width: 80%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+input {
+    padding: 3px;
+}
+
+input[type='submit'] {
+    width: 50%;
+    background-color: #EF476F;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+    padding: 5px 15px;
+    color: white;
+    font-weight: bolder
+
+}
