@@ -22,7 +22,6 @@ h1 {
 }
 
 form {
-    /* background-color: red; */
     width: 80%;
 }
 
@@ -44,4 +43,26 @@ input[type='submit'] {
     color: white;
     font-weight: bolder
 
+}
+
+@media screen and (max-width: 850px) {
+    main {
+        width: 50vw;
+    }
+
+    input[type="submit"] {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    main {
+        width: 80vw
+    }
+}
+
+@media screen and (max-width: 380px) {
+    input[type="submit"] {
+        width: 70%
+    }
 }
