@@ -1,5 +1,6 @@
 const User = require('./User')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 async function registerUser(req, res, next) {
 
@@ -24,5 +25,23 @@ async function registerUser(req, res, next) {
 
 }
 
+async function logUser(req, res, next) {
 
-module.exports = {registerUser}
+    const {email, password} = req.body
+    const doesPasswordsMatch = await User.validatePassword(email, password)
+    const userExists = await User.findByEmail(email)
+    const {name, _id} = userExists
+
+    if(!userExists || !doesPasswordsMatch) return res.send('Email or password incorrect')
+    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 120})
+
+    res.cookie('tk', userToken)
+    res.cookie('userName', name)
+    res.cookie('userId', _id.toString())
+
+    res.redirect('/')
+
+}
+
+
+module.exports = {registerUser, logUser}
