@@ -1,8 +1,12 @@
 const Task = require('./Task')
 
-function getTasksPage(req, res, next) {
+async function getTasksPage(req, res, next) {
+    const userId = req.cookies.userId
+    const userTasks = await Task.getAll(userId).toArray()
 
-    res.render('index')
+    res.render('index', {
+        tasks: userTasks[0]
+    })
 
 }
 

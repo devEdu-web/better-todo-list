@@ -40,12 +40,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Clean my room</td>
-                        <td>Urgent</td>
-                        <td class="d-flex justify-content-center"><button type="button" class="btn-close" aria-label="Close"></button></td>
-                    </tr>
+                    
+
+                        <% tasks.tasks.forEach((task, index) => { %> 
+                            <tr>
+                                <th><%= index+1 %> </th>
+                                <td id="className"><%= task.task %></td>
+                                <td id="classPriority"><%= task.priority %> </td>
+                                <td class="d-flex justify-content-center"><button type="button" class="btn-close" aria-label="Close"></button></td>
+                            </tr>
+
+                        <% }) %>  
+                   
                 </tbody>
             </table>
         </div>
