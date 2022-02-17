@@ -13,9 +13,19 @@ class Task {
 
     }
 
+
+
     getUserTasks() {
         const db = mongoClient.getDb()
         return db.collection('tasks').findOne({userId: this.userId})
+    }
+
+    static async deleteTask(userId, updatedTasks) {
+        const db = mongoClient.getDb()
+        return db.collection('tasks').updateOne(
+            {userId: userId},
+            {$set: {tasks: updatedTasks}}
+        )
     }
 
     async save() {

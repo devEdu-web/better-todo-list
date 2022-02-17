@@ -33,7 +33,7 @@ async function logUser(req, res, next) {
     const {name, _id} = userExists
 
     if(!userExists || !doesPasswordsMatch) return res.send('Email or password incorrect')
-    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 120})
+    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 600000})
 
     res.cookie('tk', userToken)
     res.cookie('userName', name)
