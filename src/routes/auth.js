@@ -6,6 +6,7 @@ const router = Router()
 
 router.get('/register', authMiddleware.shouldUserSeeLoginAndRegisterPage, authController.getRegisterPage)
 router.get('/login', authMiddleware.shouldUserSeeLoginAndRegisterPage, authController.getLoginPage)
+router.get('/logout', userController.logout)
 
 
 router.post('/register', userController.registerUser)

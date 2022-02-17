@@ -33,9 +33,9 @@ async function logUser(req, res, next) {
     const {name, _id} = userExists
 
     if(!userExists || !doesPasswordsMatch) return res.send('Email or password incorrect')
-    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 600000})
+    const userToken = jwt.sign({name, userId: _id.toString()}, process.env.JWT_SECRET, {expiresIn: 600}) // expire in 10 minutes
 
-    res.cookie('tk', userToken)
+    res.cookie('tk', userToken, {expiresIn: new Date(Date.now() + 600000)}) // expire in 10 minutes
     res.cookie('userName', name)
     res.cookie('userId', _id.toString())
 
@@ -43,5 +43,10 @@ async function logUser(req, res, next) {
 
 }
 
+function logout(req, res, next) {
+    res.clearCookie('tk')
+    res.redirect('/login')
 
-module.exports = {registerUser, logUser}
+}
+
+module.exports = {registerUser, logUser, logout}
