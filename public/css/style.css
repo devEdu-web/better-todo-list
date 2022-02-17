@@ -13,6 +13,7 @@ body {
 }
 
 main {
+    position: relative;
     padding: 30px;
     background-color: white;
     width: 70vw;
@@ -60,6 +61,14 @@ input[type="submit"] {
 
 .btn-close {
     color: red;
+}
+
+.logout {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    text-decoration: none;
+    color: #EF476F;
 }
 
 @media screen and (max-width: 600px) {
