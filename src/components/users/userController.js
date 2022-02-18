@@ -9,16 +9,24 @@ async function registerUser(req, res, next) {
         const {name, email, password} = req.body
         const currentEmailExists = await User.findByEmail(email)
         const passwordEncoded = await bcrypt.hash(password, 10)
-
+        
         if(currentEmailExists) return res.send('User already exists.')
         
         const currentUser = new User(name, email, passwordEncoded)
+        
+        // await currentUser.save()
+        
+        console.log(currentUser)
 
-        currentUser.save()
-        res.send('User saved')
+        res.status(201).json({
+            message: 'User Created with success.'
+        })
 
     } catch (e) {
-        res.send(e)
+        console.log(e)
+        res.status(401).json({
+            error: e.message,
+        })
     }
 
 
@@ -49,7 +57,7 @@ function logout(req, res, next) {
 
 }
 
-// Modifica o ajax na hora de remover as tarefas. Ao inves de redirecionar, apagar o elemento da tela,  tambem adicionar validation para nao mandar task vazia
-//Adicionar ajax com validation nologin e register
+// Adicionar validation na hora de mandar as tasks para não ir task vazia
+//Adicionar ajax com validation no login e register
  
 module.exports = {registerUser, logUser, logout}
