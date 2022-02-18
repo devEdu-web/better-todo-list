@@ -6,14 +6,20 @@ deleteButtons.forEach(button => {
 })
 
 async function deleteTask(e) {
-    const rowToBeDeleted = e.target.parentElement.parentElement.children[0]
-    const taskIndexInDb = Number(rowToBeDeleted.innerHTML) - 1
+    const rowToBeDeleted = e.target.parentElement.parentElement
+    const rowIndex = e.target.parentElement.parentElement.children[0]
+    const taskIndexInDb = Number(rowIndex.innerHTML) - 1
+
+    console.log(rowToBeDeleted)
 
     const response = await fetch(`/delete-task/${taskIndexInDb.toString()}`, {
         method: "DELETE",
         redirect: 'follow'
     })
-    window.location.href = '/'
+
+    rowToBeDeleted.remove()
+
+    // window.location.href = '/'
     // const dataResponse = await response.json()
     // console.log(response)
 

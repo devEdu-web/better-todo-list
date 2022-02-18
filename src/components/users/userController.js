@@ -49,4 +49,7 @@ function logout(req, res, next) {
 
 }
 
+// Modifica o ajax na hora de remover as tarefas. Ao inves de redirecionar, apagar o elemento da tela,  tambem adicionar validation para nao mandar task vazia
+//Adicionar ajax com validation nologin e register
+ 
 module.exports = {registerUser, logUser, logout}
