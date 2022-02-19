@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: linear-gradient(65deg, #A663FC, #5151EC);
+    background-image: linear-gradient(65deg, #a663fc, #5151ec);
     min-height: 100vh;
 }
 
@@ -40,14 +40,18 @@ input {
 
 input[type='submit'] {
     width: 50%;
-    background-color: #EF476F;
+    background-color: #ef476f;
     border: none;
     border-radius: 100px;
     outline: none;
     padding: 5px 15px;
     color: white;
-    font-weight: bolder
+    font-weight: bolder;
+}
 
+a {
+    text-decoration: none;
+    color: #ef476f;
 }
 
 @media screen and (max-width: 850px) {
@@ -55,24 +59,23 @@ input[type='submit'] {
         width: 50vw;
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
         width: 70%;
     }
 }
 
 @media screen and (max-width: 550px) {
-
     .alert {
         width: 80vw;
     }
 
     main {
-        width: 80vw
+        width: 80vw;
     }
 }
 
 @media screen and (max-width: 380px) {
-    input[type="submit"] {
-        width: 70%
+    input[type='submit'] {
+        width: 70%;
     }
 }
