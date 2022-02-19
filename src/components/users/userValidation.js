@@ -23,18 +23,5 @@ function registerValidation(req, res, next) {
     }
 }
 
-// function loginValidation(req, res, next) {
-//     const validator = new Validator();
-//     const { email, password } = req.body;
-
-//     try {
-//         const errors = validator
-//         .isEmpty(email)
-//         .isEmail(email)
-
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
 
 module.exports = { registerValidation };

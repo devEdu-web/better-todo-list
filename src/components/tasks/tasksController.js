@@ -4,7 +4,6 @@ async function getTasksPage(req, res, next) {
     const userId = req.cookies.userId;
     const userName = req.cookies.userName;
     const userTasks = await Task.getAll(userId).toArray();
-    console.log(userName);
     res.render('index', {
         tasks: userTasks[0],
         userName,
