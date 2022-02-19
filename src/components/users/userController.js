@@ -12,7 +12,7 @@ async function registerUser(req, res, next) {
         if (currentEmailExists)
             return res.status(400).json({
                 error: true,
-                message: 'User already exists.',
+                message: 'Email already exists.',
             });
 
         const currentUser = new User(nameCapitalized, email, passwordEncoded);
