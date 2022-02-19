@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 async function registerUser(req, res, next) {
     try {
         const { name, email, password } = req.body;
-        const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)
+        const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
         const currentEmailExists = await User.findByEmail(email);
         const passwordEncoded = await bcrypt.hash(password, 10);
 
@@ -16,7 +16,7 @@ async function registerUser(req, res, next) {
             });
 
         const currentUser = new User(nameCapitalized, email, passwordEncoded);
-        console.log(currentUser)
+        console.log(currentUser);
         await currentUser.save();
 
         res.redirect(303, '/login');

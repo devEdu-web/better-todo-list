@@ -23,5 +23,4 @@ function registerValidation(req, res, next) {
     }
 }
 
-
 module.exports = { registerValidation };
