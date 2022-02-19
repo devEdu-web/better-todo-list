@@ -1,4 +1,4 @@
-
+const errorDiv = document.getElementById('error')
 
 document.userForm.onsubmit = async function (event) {
     event.preventDefault(event)
@@ -6,14 +6,17 @@ document.userForm.onsubmit = async function (event) {
     const data = new FormData(form)
     const options = {
         method: 'POST',
-        body: new URLSearchParams(data)
+        body: new URLSearchParams(data),
+        redirect: 'follow'
     }
 
-    console.log(form.action)
-
     const response = await fetch(form.action, options)
-    const jsonResponse = await response.json()
-
-    console.log(jsonResponse)
+    if(response.redirected) {
+        window.location.href = response.url
+    } else {
+        const json = await response.json()
+        errorDiv.innerHTML = json.message
+        errorDiv.style.display = 'block'
+    }
 
 }

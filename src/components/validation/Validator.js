@@ -9,26 +9,26 @@ class Validator {
         }
     }
 
-    isEmpty(string) {
-        if(!string) {
-            throw new Error('Field must not be empty')
+    isEmpty(field) {
+        if(!field) {
+            throw new Error(`Fields must not be empty`)
         } else {
             return this
         }
     }
 
-    matchFields(field1, field2) {
+    passwordsMatch(field1, field2) {
         if(field1 !== field2) {
-            throw new Error('Fields must match')
+            throw new Error("Passwords doesn't match")
         } else {
             return this
         }   
     }
 
-    minLength(length, string) {
+    minLength(field, length, value) {
 
-        if(string.length < length) {
-            throw new Error(`${string} must have ${length} characters`)
+        if(value.length < length) {
+            throw new Error(`${field} must have ${length} characters`)
         } else {
             return this
         }

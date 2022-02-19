@@ -10,22 +10,25 @@ async function registerUser(req, res, next) {
         const currentEmailExists = await User.findByEmail(email)
         const passwordEncoded = await bcrypt.hash(password, 10)
         
-        if(currentEmailExists) return res.send('User already exists.')
+        if(currentEmailExists) return res.status(400).json({
+            error: true,
+            message: 'User already exists.'
+        })
         
         const currentUser = new User(name, email, passwordEncoded)
         
-        // await currentUser.save()
+        await currentUser.save()
         
-        console.log(currentUser)
+        res.redirect(303, '/login')
 
-        res.status(201).json({
-            message: 'User Created with success.'
-        })
+
+
 
     } catch (e) {
         console.log(e)
         res.status(401).json({
-            error: e.message,
+            error: true,
+            message: e.message
         })
     }
 
